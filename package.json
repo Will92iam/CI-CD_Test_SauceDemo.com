@@ -1,0 +1,28 @@
+{
+  "name": "ci-cd_test_saucedemo.com",
+  "version": "1.0.0",
+  "description": "This is a test repo, to create a CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Will92iam/CI-CD_Test_SauceDemo.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Will92iam/CI-CD_Test_SauceDemo.com/issues"
+  },
+  "homepage": "https://github.com/Will92iam/CI-CD_Test_SauceDemo.com#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0"
+  }
+}
