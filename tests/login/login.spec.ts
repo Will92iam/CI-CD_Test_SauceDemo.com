@@ -27,8 +27,7 @@ test.describe('Login page', () => {
   test('shows an error for a locked-out user', async ({ loginPage }) => {
     await loginPage.login(users.lockedOut.username, users.lockedOut.password);
 
-    // INTENTIONALLY WRONG — demo of a failing assertion / red CI run, revert before merging.
-    await expect(loginPage.errorMessage).toHaveText('This assertion is intentionally wrong');
+    await expect(loginPage.errorMessage).toHaveText(loginErrors.lockedOut);
   });
 
   test('shows an error when the username is missing', async ({ loginPage }) => {
