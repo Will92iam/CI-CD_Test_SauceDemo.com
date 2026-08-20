@@ -27,7 +27,8 @@ test.describe('Login page', () => {
   test('shows an error for a locked-out user', async ({ loginPage }) => {
     await loginPage.login(users.lockedOut.username, users.lockedOut.password);
 
-    await expect(loginPage.errorMessage).toHaveText(loginErrors.lockedOut);
+    // INTENTIONALLY WRONG — demo of a failing assertion / branch protection ruleset test, revert before merging.
+    await expect(loginPage.errorMessage).toHaveText('This assertion is intentionally wrong');
   });
 
   test('shows an error when the username is missing', async ({ loginPage }) => {
