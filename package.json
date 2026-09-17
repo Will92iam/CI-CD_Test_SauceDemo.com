@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Will92iam/CI-CD_Test_SauceDemo.com#readme",
   "devDependencies": {
+    "@flakiness/playwright": "^2.0.2",
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.2.0"
   }
