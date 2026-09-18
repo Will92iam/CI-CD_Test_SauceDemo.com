@@ -15,8 +15,6 @@ test.describe('Login page', () => {
 
     await expect(page).toHaveURL(/inventory.html/);
     await expect(inventoryPage.inventoryList).toBeVisible();
-    // flakiness.io demo: intentionally wrong expected text, always fails
-    await expect(page.locator('.title')).toHaveText('Producten');
   });
 
   test('shows an error for an unknown username/password combination', async ({ loginPage, page }) => {

@@ -14,14 +14,9 @@ test.describe('Checkout flow', () => {
     checkoutStepOnePage,
     checkoutStepTwoPage,
     checkoutCompletePage,
-    page,
   }) => {
     await inventoryPage.addProductToCart(products.backpack);
-    // flakiness.io demo: race condition — reads the badge once after a short,
-    // insufficient wait instead of using an auto-retrying assertion, so it
-    // sometimes reads the badge before it updates.
-    await page.waitForTimeout(1);
-    expect(await inventoryPage.cartBadge.textContent()).toBe('1');
+    await expect(inventoryPage.cartBadge).toHaveText('1');
 
     await inventoryPage.goToCart();
     await expect(cartPage.cartItems).toHaveCount(1);
