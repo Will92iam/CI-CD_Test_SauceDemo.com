@@ -23,7 +23,10 @@ export default defineConfig({
      so cap workers even locally instead of the CPU-count default. */
   workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['@flakiness/playwright', { flakinessProject: 'TestWilliams/CI-CD_Test_SauceDemo.com' }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */

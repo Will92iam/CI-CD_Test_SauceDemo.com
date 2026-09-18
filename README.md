@@ -73,3 +73,18 @@ Users, checkout details, product names, and expected error messages live in
   additionally retries navigation a few times with backoff before failing a test.
 - CI workflow: [`.github/workflows/playwright.yml`](.github/workflows/playwright.yml) — runs
   `npx playwright test` on push/PR to `main`/`master` and uploads the HTML report as an artifact.
+
+## Flakiness tracking (flakiness.io)
+
+Test results are also reported to [flakiness.io](https://flakiness.io/TestWilliams/CI-CD_Test_SauceDemo.com)
+via the `@flakiness/playwright` reporter, configured in [`playwright.config.ts`](playwright.config.ts)
+alongside the `html` reporter. It tracks flaky tests over time and surfaces trends that a single
+CI run doesn't show.
+
+- Runs are visible at [flakiness.io/TestWilliams/CI-CD_Test_SauceDemo.com](https://flakiness.io/TestWilliams/CI-CD_Test_SauceDemo.com).
+- Authentication in CI uses GitHub Actions OIDC — the workflow grants `id-token: write`
+  permission (see [`.github/workflows/playwright.yml`](.github/workflows/playwright.yml)), so no
+  `FLAKINESS_ACCESS_TOKEN` secret is needed.
+- Locally, `npx playwright test` also runs the reporter; without CI's OIDC token it needs a
+  `FLAKINESS_ACCESS_TOKEN` environment variable to upload results (otherwise it just skips the
+  upload).
